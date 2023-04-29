@@ -2,14 +2,7 @@ import React from 'react';
 import '../styles/Weather.css';
 import Days from './Days';
 import { useState } from 'react';
-import sun from '../assets/icons/sun.svg';
-import cloudySun from '../assets/icons/cloudy-sun.svg';
-import cloudy from '../assets/icons/cloudy.svg';
-import rainy from '../assets/icons/rainy.svg';
-import snowy from '../assets/icons/snowy.svg';
-import storm from '../assets/icons/storm.svg';
-import thunder from '../assets/icons/thunder.svg';
-import windy from '../assets/icons/windy.svg';
+
 
 function Weather({ weatherData }) {
 
