@@ -3,7 +3,7 @@ import '../styles/Days.css';
 
 function Days() {
   return (
-    <div class="card-action">
+    <div className="card-action">
         <a href="#" className='actual-day'>Thursday</a>
         <a href="#">Friday</a>
         <a href="#">Saturday</a>

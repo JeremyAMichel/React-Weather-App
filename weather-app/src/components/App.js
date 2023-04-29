@@ -1,16 +1,42 @@
 import '../styles/App.css';
 import Header from './Header';
 import Weather from './Weather';
+import { useState, useEffect } from 'react';
 
 function App() {
+
+  const [city, setCity] = useState('Lyon');
+  const [data, setData] = useState([]);
+
+  const fetchWeatherData = () => {
+    fetch(`${process.env.REACT_APP_WEATHER_API_URL}/forecast.json?key=${process.env.REACT_APP_WEATHER_API_KEY}&q=${city}&days=5&aqi=no&alerts=no`)
+      .then(response => {
+        return response.json()
+      })
+      .then(data => {
+        setData(data)
+      })
+  } 
+
+  useEffect(() => {
+    fetchWeatherData()
+  }, [])
+
+
   return (
     <div className="App">
       <Header />
 
-      <div class="row">
-        <div class="col s12 m6 push-m3">
+      <div className="row">
+        <div className="col s12 m6 push-m3">
 
-          <Weather />
+        {(typeof data.location != 'undefined') ? (
+          <Weather weatherData={data}/>
+        ): (
+          <div></div>
+        )}
+
+          
               
         </div>
       </div>
