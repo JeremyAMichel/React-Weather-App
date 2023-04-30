@@ -7,20 +7,20 @@ function App() {
 
   const [city, setCity] = useState('Lyon');
   const [data, setData] = useState([]);
-
-  const fetchWeatherData = () => {
-    fetch(`${process.env.REACT_APP_WEATHER_API_URL}/forecast.json?key=${process.env.REACT_APP_WEATHER_API_KEY}&q=${city}&days=5&aqi=no&alerts=no`)
-      .then(response => {
-        return response.json()
-      })
-      .then(data => {
-        setData(data)
-      })
-  } 
-
+  
   useEffect(() => {
+    const fetchWeatherData = () => {
+      fetch(`${process.env.REACT_APP_WEATHER_API_URL}/forecast.json?key=${process.env.REACT_APP_WEATHER_API_KEY}&q=${city}&days=5&aqi=no&alerts=no`)
+        .then(response => {
+          return response.json()
+        })
+        .then(data => {
+          setData(data);
+          setCity(data.location.name);
+        })
+    };
     fetchWeatherData()
-  }, [])
+  }, [city])
 
 
   return (
@@ -31,7 +31,7 @@ function App() {
         <div className="col s12 m6 push-m3">
 
         {(typeof data.location != 'undefined') ? (
-          <Weather weatherData={data}/>
+          <Weather city={city} weatherData={data}/>
         ): (
           <div></div>
         )}

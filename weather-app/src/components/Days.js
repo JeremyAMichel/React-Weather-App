@@ -1,7 +1,8 @@
 import React from 'react';
 import '../styles/Days.css';
+import '../components/App';
 
-function Days() {
+function Days({ getDataOfClickedDay }) {
 
     const weekDays = [
         'Sunday',
@@ -22,14 +23,16 @@ function Days() {
         weekDays[(today.getDay()+3)>6 ? (today.getDay()+3)-7 : (today.getDay()+3)],
         weekDays[(today.getDay()+4)>6 ? (today.getDay()+4)-7 : (today.getDay()+4)]
     ];
+
     
+
   return (
     <div className="card-action">
-        <a href="#" className='actual-day'>{currentAndFourNextDaysNames[0]}</a>
-        <a href="#">{currentAndFourNextDaysNames[1]}</a>
-        <a href="#">{currentAndFourNextDaysNames[2]}</a>
-        <a href="#">{currentAndFourNextDaysNames[3]}</a>
-        <a href="#">{currentAndFourNextDaysNames[4]}</a>
+        <a id="day-0" className='actual-day' onClick={() =>{getDataOfClickedDay(0, true)}}>{currentAndFourNextDaysNames[0]}</a>
+        <a id="day-1" onClick={() =>{getDataOfClickedDay(1, false)}}>{currentAndFourNextDaysNames[1]}</a>
+        <a id="day-2" onClick={() =>{getDataOfClickedDay(2, false)}}>{currentAndFourNextDaysNames[2]}</a>
+        <a id="day-3" onClick={() =>{getDataOfClickedDay(3, false)}}>{currentAndFourNextDaysNames[3]}</a>
+        <a id="day-4" onClick={() =>{getDataOfClickedDay(4, false)}}>{currentAndFourNextDaysNames[4]}</a>
     </div>
   )
 }

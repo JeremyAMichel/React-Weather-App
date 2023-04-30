@@ -1,3 +1,7 @@
 .actual-day{
     font-weight: bold;
 }
+
+a:hover{
+    cursor: pointer;
+}
